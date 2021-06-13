@@ -32,7 +32,7 @@ To deploy this yourself:
 1. create a bot [here](https://discord.com/developers/applications)
 2. enable [presence intent and server members intent](https://user-images.githubusercontent.com/49426949/121817477-fa78cb80-cc81-11eb-937c-181541493f1d.png)
 3. invite your bot to a server you're in by going to the OAuth2 tab, selecting the "bot" scope and navigating to the url
-4. click on the "Deploy with Vercel" button down below and provide the token to your bot and the id of the server you invited the bot to.
+4. click on the "Deploy with Vercel" button down below and provide the token to your bot and the id of the server you invited the bot to
 
 Done!
 
