@@ -6,7 +6,7 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
 
 ### Set up
-1. Join the [Discord server](https://discord.gg/zkspfFwqDg) (Required, as that's where the bot gets your presence information from)
+1. Join the [Discord server](https://discord.gg/zkspfFwqDg) (required, as that's where the bot gets your presence information from)
 2. Add to your readme
 
    `![](https://discord-md-badge.vercel.app/api/shield/USERID)`
