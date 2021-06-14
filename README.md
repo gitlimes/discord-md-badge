@@ -21,8 +21,8 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 
 Badge | Style | Query
  :--- | :--- | :---
-![flat](https://user-images.githubusercontent.com/49426949/121810699-24ba9100-cc62-11eb-8c6c-cdc40da99b87.png) | Flat | `?style=flat`
-![flat-square](https://user-images.githubusercontent.com/49426949/121810774-65b2a580-cc62-11eb-869b-7973c9450a96.png) | Flat Square | `?style=flat-square`
-![for-the-badge](https://user-images.githubusercontent.com/49426949/121810985-1faa1180-cc63-11eb-8fc7-e6b8c2e38bc1.png) | For the Badge | None
-![plastic](https://user-images.githubusercontent.com/49426949/121810663-05236880-cc62-11eb-8b9c-bd736d1b5787.png) | Plastic | `?style=plastic`
-![social](https://user-images.githubusercontent.com/49426949/121810811-824edd80-cc62-11eb-9922-bdf2c8be7371.png) | Social | `?style=social`
+![flat](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat) | flat | `?style=flat`
+![flat-square](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat-square) | flat-square | `?style=flat-square`
+![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/406125028065804289) | for-the-badge | None
+![plastic](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=plastic) | plastic | `?style=plastic`
+![social](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=social) | social | `?style=social`
