@@ -26,14 +26,3 @@ Badge | Style | Query
 ![for-the-badge](https://user-images.githubusercontent.com/49426949/121810985-1faa1180-cc63-11eb-8fc7-e6b8c2e38bc1.png) | For the Badge | None
 ![plastic](https://user-images.githubusercontent.com/49426949/121810663-05236880-cc62-11eb-8b9c-bd736d1b5787.png) | Plastic | `?style=plastic`
 ![social](https://user-images.githubusercontent.com/49426949/121810811-824edd80-cc62-11eb-9922-bdf2c8be7371.png) | Social | `?style=social`
-
-### Deploy it yourself
-To deploy this yourself:
-1. create a bot [here](https://discord.com/developers/applications)
-2. enable [presence intent and server members intent](https://user-images.githubusercontent.com/49426949/121817477-fa78cb80-cc81-11eb-937c-181541493f1d.png)
-3. invite your bot to a server you're in by going to the OAuth2 tab, selecting the "bot" scope and navigating to the url
-4. click on the "Deploy with Vercel" button down below and provide the token to your bot and the id of the server you invited the bot to
-
-Done!
-
-[![Deploy with Vercel](https://img.shields.io/badge/Deploy%20with%20Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fmontylion%2Fdiscord-md-badge&env=DC_TOKEN,GUILD_ID&envDescription=The%20DC_TOKEN%20environment%20variable%20is%20needed%20to%20access%20the%20Discord%20API%2C%20and%20it%20should%20be%20the%20token%20of%20a%20bot%20you%20share%20a%20server%20with.%20The%20GUILD_ID%20environment%20variable%20should%20be%20the%20ID%20of%20a%20server%20you%20and%20the%20bot%20have%20in%20common.)

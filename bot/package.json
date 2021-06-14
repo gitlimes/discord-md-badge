@@ -1,0 +1,30 @@
+{
+  "name": "bot-application",
+  "version": "1.0.0",
+  "description": "This handles communication to the Discord API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montylion/discord-md-badge.git"
+  },
+  "keywords": [
+    "markdown",
+    "discord",
+    "badge-generator",
+    "profile-readme"
+  ],
+  "author": "montylion",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/montylion/discord-md-badge/issues"
+  },
+  "homepage": "https://github.com/montylion/discord-md-badge#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "express": "^4.17.1"
+  }
+}
