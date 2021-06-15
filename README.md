@@ -23,6 +23,6 @@ Badge | Style | Query
  :--- | :--- | :---
 ![flat](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat) | flat | `?style=flat`
 ![flat-square](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat-square) | flat-square | `?style=flat-square`
-![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/406125028065804289) | for-the-badge | None
+![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/406125028065804289) | for-the-badge | None (default)
 ![plastic](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=plastic) | plastic | `?style=plastic`
 ![social](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=social) | social | `?style=social`
