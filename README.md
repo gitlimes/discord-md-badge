@@ -34,5 +34,4 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 | Endpoint              | Description                                       | Example response                                                                          |
 | :-------------------- | :------------------------------------------------ | :---------------------------------------------------------------------------------------- |
 | `/shield/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat)     |
-| `/shield/png/USERID`  | returns a shield in the PNG format                | ![](https://discord-md-badge.vercel.app/api/shield/png/406125028065804289?style=flat) |
 | `/shield/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "Monty#3581", "p": "online" }`                                                    |
