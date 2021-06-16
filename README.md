@@ -63,7 +63,7 @@ You can pass a color for the logo (the examples below also use `&theme=default-i
 | Badge                                                                                                                    | Query                 | Description                                             |
 | :----------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
 | ![presence](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=presence&theme=default-inverted) | `?logoColor=presence` | Changes the color of the logo according to the presence |
-| ![word](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=green&theme=default-inverted)        | `?logoColor=green`    | Supported colors [here](https://shields.io/#colors)     |
+| ![word](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=orange&theme=default-inverted)       | `?logoColor=orange`   | Supported colors [here](https://shields.io/#colors)     |
 | ![hex](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=ae81ce&theme=default-inverted)        | `?logoColor=ae81ce`   | Any hex code, without the `#`                           |
 
 ## Endpoints
