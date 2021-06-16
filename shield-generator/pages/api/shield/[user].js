@@ -13,19 +13,127 @@ export default async function handler(req, res) {
 
     // This function gets the shield from shields.io and returns it
     async function makeShield(t, p) {
-      let logoColor = "white";
-
-      if (req.query.style === "social") {
-        logoColor = "#5865F2";
-      }
-
-      const rawShield = await fetch(
-        `https://img.shields.io/static/v1?label=${encodeURIComponent(
+      /*
+      if (req.query.compact === "true") {
+        shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
           t
         )}&message=${encodeURIComponent(p)}&style=${
           req.query.style || "for-the-badge"
-        }&color=00ff00&logo=discord&logoColor=${logoColor}`
-      );
+        }&color=00ff00&logo=discord&logoColor=${logoColor}`;
+      } else {
+        shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
+          t
+        )}&message=${encodeURIComponent(p)}&style=${
+          req.query.style || "for-the-badge"
+        }&color=00ff00&logo=discord&logoColor=${logoColor}`;
+      }
+      */
+
+      let logoColor;
+
+      if (req.query.style === "social") {
+        logoColor = "#5865F2";
+      } else {
+        logoColor = "white";
+      }
+
+      // These are regular expressions that "find" the background color of the left and right section respectively
+      const leftBgRegEx = new RegExp(`fill="#555"`, "g");
+      const rightBgRegEx = new RegExp(`fill="#00ff00"`, "g");
+
+      // This function replaces the selected color with one depending on the presence information
+      async function getPresenceColor() {
+        switch (p) {
+          case "online": {
+            return "37b05d";
+          }
+          case "idle": {
+            return "faa81a";
+          }
+          case "do not disturb": {
+            return "ED4245";
+          }
+          default: {
+            return "555";
+          }
+        }
+      }
+
+      // presenceTheme is present for legacy purposes, theme should be used instead
+      let theme = req.query.presenceTheme || req.query.theme;
+
+      let rightColor, leftColor;
+
+      // This is where the whole theming thing takes place!
+      switch (theme) {
+        default:
+          {
+            rightColor = "555";
+            leftColor = "7289da";
+          }
+          break;
+        case "default-inverted":
+          {
+            leftColor = "555";
+            rightColor = "7289da";
+          }
+          break;
+        case "clean":
+          {
+            leftColor = "555";
+            rightColor = await getPresenceColor();
+          }
+          break;
+        case "clean-inverted":
+          {
+            leftColor = await getPresenceColor();
+            rightColor = "555";
+          }
+          break;
+
+        case "dc":
+        case "discord":
+          {
+            leftColor = "7289da";
+            rightColor = await getPresenceColor();
+          }
+          break;
+        case "dc-inverted":
+        case "discord-inverted":
+          {
+            leftColor = await getPresenceColor();
+            rightColor = "7289da";
+          }
+          break;
+        case "full":
+        case "full-presence":
+          {
+            leftColor = await getPresenceColor();
+            rightColor = await getPresenceColor();
+          }
+          break;
+        case "gray":
+        case "grey":
+          {
+            leftColor = "555";
+            rightColor = "555";
+          }
+          break;
+        case "blurple":
+          {
+            leftColor = "7289da";
+            rightColor = "7289da";
+          }
+          break;
+      }
+
+      const shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
+        t
+      )}&message=${encodeURIComponent(p)}&style=${
+        req.query.style || "for-the-badge"
+      }&color=${rightColor}&labelColor=${leftColor}&logo=discord&logoColor=${logoColor}`;
+
+      const rawShield = await fetch(shieldURL);
 
       const svgShield = await rawShield.text();
 
@@ -40,93 +148,6 @@ export default async function handler(req, res) {
         boldRegEx,
         `fill="#fff" font-weight="bold">${t}</text>`
       );
-
-      // These are regular expressions that "find" the background color of the left and right section respectively
-      const leftBgRegEx = new RegExp(`fill="#555"`, "g");
-      const rightBgRegEx = new RegExp(`fill="#00ff00"`, "g");
-
-      // This function replaces the selected color with one depending on the presence information
-      function replaceWithPresenceColor(regEx) {
-        switch (p) {
-          case "online":
-            {
-              svgShieldFix = svgShieldFix.replace(regEx, `fill="#37b05d"`);
-            }
-            break;
-          case "idle":
-            {
-              svgShieldFix = svgShieldFix.replace(regEx, `fill="#faa81a"`);
-            }
-            break;
-          case "do not disturb":
-            {
-              svgShieldFix = svgShieldFix.replace(regEx, `fill="#ED4245"`);
-            }
-            break;
-          default: {
-            svgShieldFix = svgShieldFix.replace(regEx, `fill="#555"`);
-          }
-        }
-      }
-
-      // presenceTheme is present for legacy purposes, theme should be used instead
-      let theme = req.query.presenceTheme || req.query.theme;
-
-      // This is where the whole theming thing takes place!
-      switch (theme) {
-        case "default-inverted":
-          {
-            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
-          }
-          break;
-        case "full":
-        case "full-presence":
-          {
-            replaceWithPresenceColor(leftBgRegEx);
-            replaceWithPresenceColor(rightBgRegEx);
-          }
-          break;
-        case "dc":
-        case "discord":
-          {
-            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
-            replaceWithPresenceColor(rightBgRegEx);
-          }
-          break;
-        case "dc-inverted":
-        case "discord-inverted":
-          {
-            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
-            replaceWithPresenceColor(leftBgRegEx);
-          }
-          break;
-        case "clean":
-          {
-            replaceWithPresenceColor(rightBgRegEx);
-          }
-          break;
-        case "clean-inverted":
-          {
-            replaceWithPresenceColor(leftBgRegEx);
-            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
-          }
-          break;
-        case "grey":
-          {
-            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
-          }
-          break;
-        case "blurple":
-          {
-            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
-            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
-          }
-          break;
-        default: {
-          svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
-          svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
-        }
-      }
 
       res.setHeader("Content-Type", "image/svg+xml");
       res.status(200).send(svgShieldFix);
