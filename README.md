@@ -31,8 +31,6 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 
 ### `presenceTheme`
 
-### `presenceTheme`
-
 You can also use the `presenceTheme` query option to change the colors of the shield according to the presence
 
 | Badge                                                                                           | Query                  |
@@ -51,7 +49,7 @@ The `presenceTheme` option can be used in conjunction with the `style` option:
 
 Note: the `presenceTheme` option will not work with the social `style`.
 
-### Endpoints
+## Endpoints
 
 (Preceded by `https://discord-md-badge.vercel.app/api`)
 
