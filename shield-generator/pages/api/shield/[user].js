@@ -77,7 +77,6 @@ export default async function handler(req, res) {
         case "default-inverted":
           {
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
-            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
           }
           break;
         case "full":
@@ -90,32 +89,30 @@ export default async function handler(req, res) {
         case "dc":
         case "discord":
           {
-            replaceWithPresenceColor(rightBgRegEx);
             svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
+            replaceWithPresenceColor(rightBgRegEx);
           }
           break;
         case "dc-inverted":
         case "discord-inverted":
           {
-            replaceWithPresenceColor(leftBgRegEx);
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
+            replaceWithPresenceColor(leftBgRegEx);
           }
           break;
         case "clean":
           {
             replaceWithPresenceColor(rightBgRegEx);
-            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
           }
           break;
         case "clean-inverted":
           {
-            replaceWithPresenceColor(leftBgRegEx);
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
+            replaceWithPresenceColor(leftBgRegEx);
           }
           break;
         case "grey":
           {
-            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
           }
           break;
