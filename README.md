@@ -4,7 +4,7 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
 ![](https://discord-md-badge.vercel.app/api/shield/406125028065804289)
 
-### Set up
+## Set up
 
 1. Join the [Discord server](https://discord.gg/zkspfFwqDg) (required, as that's where the bot gets your presence information from)
 2. Add to your readme
@@ -15,7 +15,9 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
 Done! (Make sure not to leave the server, or this will break)
 
-### Styling
+## Styling
+
+### `style`
 
 This uses [shields.io](https://shields.io) to generate the badge, so you can choose one of the styles from there by appending `?style=` to the url.
 
@@ -26,6 +28,8 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 | ![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/406125028065804289)       | for-the-badge | None (default)       |
 | ![plastic](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=plastic)         | plastic       | `?style=plastic`     |
 | ![social](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=social)           | social        | `?style=social`      |
+
+### `presenceTheme`
 
 You can also use the `presenceTheme` query option to change the colors of the shield according to the presence
 
