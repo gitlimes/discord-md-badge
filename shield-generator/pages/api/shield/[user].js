@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       let logoColor = "white";
 
       if (req.query.style === "social") {
-        logoColor = "7289da";
+        logoColor = "#5865F2";
       }
 
       console.log(
@@ -38,24 +38,71 @@ export default async function handler(req, res) {
       const svgShield = await rawShield.text();
 
       /* The for-the-badge style makes the username uppercase, and we don't want that since Discord usernames
-       * are case sensitive; here we replace it with the correctly capitalized text and we make it bold in the process */
+       * are case sensitive; here we replace it with the correctly capitalized text */
       const usernameRegExp = new RegExp(`${t.toUpperCase()}`, "g");
       let svgShieldFix = svgShield.replace(usernameRegExp, t);
 
-      // This is some hot garbage to make the left portion Discord themed
-      const greyReplaceRegEx = new RegExp(`fill="#555"`, "g");
-      svgShieldFix = svgShieldFix.replace(greyReplaceRegEx, `fill="#7289da"`);
-
-      // And this is some more hot garbage to make the right portion the default grey color
-      const greenReplaceRegEx = new RegExp(`fill="#00ff00"`, "g");
-      svgShieldFix = svgShieldFix.replace(greenReplaceRegEx, `fill="#555"`);
-
-      // This is gonna blow your mind: this is some more jank to make the username bold
+      // Here we make the username bold
       const boldRegEx = new RegExp(`fill="#fff">${t}</text>`, "g");
       svgShieldFix = svgShieldFix.replace(
         boldRegEx,
         `fill="#fff" font-weight="bold">${t}</text>`
       );
+
+      // These are regular expressions that "find" the background color of the left and right section respectively
+      const leftBgRegEx = new RegExp(`fill="#555"`, "g");
+      const rightBgRegEx = new RegExp(`fill="#00ff00"`, "g");
+
+      // This function replaces the selected color with one depending on the presence information
+      function replaceWithPresenceColor(regEx) {
+        switch (p) {
+          case "online":
+            {
+              svgShieldFix = svgShieldFix.replace(regEx, `fill="#37b05d"`);
+            }
+            break;
+          case "idle":
+            {
+              svgShieldFix = svgShieldFix.replace(regEx, `fill="#faa81a"`);
+            }
+            break;
+          case "do not disturb":
+            {
+              svgShieldFix = svgShieldFix.replace(regEx, `fill="#ED4245"`);
+            }
+            break;
+          default: {
+            svgShieldFix = svgShieldFix.replace(regEx, `fill="#555"`);
+          }
+        }
+      }
+
+      // Some more theming options!
+      switch (req.query.presenceTheme) {
+        case "full":
+          {
+            console.log("beans");
+            replaceWithPresenceColor(leftBgRegEx);
+            replaceWithPresenceColor(rightBgRegEx);
+          }
+          break;
+        case "dc":
+          {
+            replaceWithPresenceColor(rightBgRegEx);
+            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
+          }
+          break;
+        case "clean":
+          {
+            replaceWithPresenceColor(leftBgRegEx);
+            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
+          }
+          break;
+        default: {
+          svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
+          svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
+        }
+      }
 
       res.setHeader("Content-Type", "image/svg+xml");
       res.status(200).send(svgShieldFix);
