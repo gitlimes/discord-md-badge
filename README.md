@@ -2,7 +2,7 @@
 
 Add to your GitHub readme a badge that shows your Discord username and presence!
 
-![](https://discord-md-badge.vercel.app/api/shield/406125028065804289)
+![](https://discord-md-badge.vercel.app/api/shield/852977967776399400)
 
 ## Set up
 
@@ -11,7 +11,7 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
    `![](https://discord-md-badge.vercel.app/api/shield/USERID)`
 
-   replacing `USERID` with [your Discord user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/406125028065804289)`)
+   replacing `USERID` with [your Discord user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/852977967776399400)`)
 
 Done! (Make sure not to leave the server, or this will break)
 
@@ -23,11 +23,13 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 
 | Badge                                                                                               | Style         | Query                |
 | :-------------------------------------------------------------------------------------------------- | :------------ | :------------------- |
-| ![flat](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat)               | flat          | `?style=flat`        |
-| ![flat-square](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat-square) | flat-square   | `?style=flat-square` |
-| ![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/406125028065804289)       | for-the-badge | None (default)       |
-| ![plastic](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=plastic)         | plastic       | `?style=plastic`     |
-| ![social](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=social)           | social        | `?style=social`      |
+| ![flat](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat)               | flat          | `?style=flat`        |
+| ![flat-square](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat-square) | flat-square   | `?style=flat-square` |
+| ![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/852977967776399400)       | for-the-badge | None (default)       |
+| ![plastic](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=plastic)         | plastic       | `?style=plastic`     |
+| ![social](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=social)           | social        | `?style=social`      |
+
+### `presenceTheme`
 
 ### `presenceTheme`
 
@@ -35,17 +37,17 @@ You can also use the `presenceTheme` query option to change the colors of the sh
 
 | Badge                                                                                           | Query                  |
 | :---------------------------------------------------------------------------------------------- | :--------------------- |
-| ![full](https://discord-md-badge.vercel.app/api/shield/406125028065804289?presenceTheme=full)   | `?presenceTheme=full`  |
-| ![clean](https://discord-md-badge.vercel.app/api/shield/406125028065804289?presenceTheme=clean) | `?presenceTheme=clean` |
-| ![dc](https://discord-md-badge.vercel.app/api/shield/406125028065804289?presenceTheme=dc)       | `?presenceTheme=dc`    |
+| ![full](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=full)   | `?presenceTheme=full`  |
+| ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean) | `?presenceTheme=clean` |
+| ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc)       | `?presenceTheme=dc`    |
 
 The `presenceTheme` option can be used in conjunction with the `style` option:
 
 | Badge                                                                                                       | Query                                 |
 | :---------------------------------------------------------------------------------------------------------- | :------------------------------------ |
-| ![full](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=plastic&presenceTheme=full) | `?style=plastic&presenceTheme=full`   |
-| ![clean](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&presenceTheme=clean)  | `?style=flat&presenceTheme=clean`     |
-| ![dc](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat-square&presenceTheme=dc) | `?style=flat-square&presenceTheme=dc` |
+| ![full](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=plastic&presenceTheme=full) | `?style=plastic&presenceTheme=full`   |
+| ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat&presenceTheme=clean)  | `?style=flat&presenceTheme=clean`     |
+| ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat-square&presenceTheme=dc) | `?style=flat-square&presenceTheme=dc` |
 
 Note: the `presenceTheme` option will not work with the social `style`.
 
@@ -55,5 +57,5 @@ Note: the `presenceTheme` option will not work with the social `style`.
 
 | Endpoint              | Description                                       | Example response                                                                  |
 | :-------------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------- |
-| `/shield/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat) |
-| `/shield/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "Monty#3581", "p": "online" }`                                            |
+| `/shield/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat) |
+| `/shield/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "Discord MD badge#9808", "p": "online" }`                                 |
