@@ -81,7 +81,6 @@ export default async function handler(req, res) {
       switch (req.query.presenceTheme) {
         case "full":
           {
-            console.log("beans");
             replaceWithPresenceColor(leftBgRegEx);
             replaceWithPresenceColor(rightBgRegEx);
           }
@@ -98,6 +97,12 @@ export default async function handler(req, res) {
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
           }
           break;
+          case "clean-inverted":
+            {
+              replaceWithPresenceColor(rightBgRegEx);
+              svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
+            }
+            break;
         default: {
           svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
           svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);

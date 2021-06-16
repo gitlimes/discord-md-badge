@@ -37,6 +37,7 @@ You can also use the `presenceTheme` query option to change the colors of the sh
 | :---------------------------------------------------------------------------------------------- | :--------------------- |
 | ![full](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=full)   | `?presenceTheme=full`  |
 | ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean) | `?presenceTheme=clean` |
+| ![clean-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean-inverted) | `?presenceTheme=clean-inverted` |
 | ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc)       | `?presenceTheme=dc`    |
 
 The `presenceTheme` option can be used in conjunction with the `style` option:
