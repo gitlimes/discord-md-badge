@@ -91,6 +91,12 @@ export default async function handler(req, res) {
             svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
           }
           break;
+        case "dc-inverted":
+          {
+            replaceWithPresenceColor(leftBgRegEx);
+            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
+          }
+          break;
         case "clean":
           {
             replaceWithPresenceColor(rightBgRegEx);

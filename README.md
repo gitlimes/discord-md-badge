@@ -39,14 +39,9 @@ You can also use the `presenceTheme` query option to change the colors of the sh
 | ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean) | `?presenceTheme=clean` |
 | ![clean-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean-inverted) | `?presenceTheme=clean-inverted` |
 | ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc)       | `?presenceTheme=dc`    |
+| ![dc-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc-inverted)       | `?presenceTheme=dc-inverted`    |
 
-The `presenceTheme` option can be used in conjunction with the `style` option:
-
-| Badge                                                                                                       | Query                                 |
-| :---------------------------------------------------------------------------------------------------------- | :------------------------------------ |
-| ![full](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=plastic&presenceTheme=full) | `?style=plastic&presenceTheme=full`   |
-| ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat&presenceTheme=clean)  | `?style=flat&presenceTheme=clean`     |
-| ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat-square&presenceTheme=dc) | `?style=flat-square&presenceTheme=dc` |
+The `presenceTheme` option can be used in conjunction with the `style` option by simply chaining the queries (e.g. `?style=flat&presenceTheme=clean`).
 
 Note: the `presenceTheme` option will not work with the social `style`.
 
