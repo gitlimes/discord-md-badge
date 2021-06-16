@@ -19,14 +19,6 @@ export default async function handler(req, res) {
         logoColor = "#5865F2";
       }
 
-      console.log(
-        `https://img.shields.io/static/v1?label=${encodeURIComponent(
-          t
-        )}&message=${encodeURIComponent(p)}&style=${
-          req.query.style || "for-the-badge"
-        }&color=00ff00&logo=discord&logoColor=${logoColor}`
-      );
-
       const rawShield = await fetch(
         `https://img.shields.io/static/v1?label=${encodeURIComponent(
           t
@@ -77,21 +69,33 @@ export default async function handler(req, res) {
         }
       }
 
-      // Some more theming options!
-      switch (req.query.presenceTheme) {
+      // presenceTheme is present for legacy purposes, theme should be used instead
+      let theme = req.query.presenceTheme || req.query.theme;
+
+      // This is where the whole theming thing takes place!
+      switch (theme) {
+        case "default-inverted":
+          {
+            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
+            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
+          }
+          break;
         case "full":
+        case "full-presence":
           {
             replaceWithPresenceColor(leftBgRegEx);
             replaceWithPresenceColor(rightBgRegEx);
           }
           break;
         case "dc":
+        case "discord":
           {
             replaceWithPresenceColor(rightBgRegEx);
             svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
           }
           break;
         case "dc-inverted":
+        case "discord-inverted":
           {
             replaceWithPresenceColor(leftBgRegEx);
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
@@ -109,7 +113,18 @@ export default async function handler(req, res) {
             svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
           }
           break;
-
+        case "grey":
+          {
+            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#555"`);
+            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);
+          }
+          break;
+        case "blurple":
+          {
+            svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
+            svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#7289da"`);
+          }
+          break;
         default: {
           svgShieldFix = svgShieldFix.replace(leftBgRegEx, `fill="#7289da"`);
           svgShieldFix = svgShieldFix.replace(rightBgRegEx, `fill="#555"`);

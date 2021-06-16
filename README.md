@@ -29,21 +29,25 @@ This uses [shields.io](https://shields.io) to generate the badge, so you can cho
 | ![plastic](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=plastic)         | plastic       | `?style=plastic`     |
 | ![social](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=social)           | social        | `?style=social`      |
 
-### `presenceTheme`
+### `theme`
 
-You can also use the `presenceTheme` query option to change the colors of the shield according to the presence
+You can also use the `theme` query option to change the colors of the shield
 
-| Badge                                                                                           | Query                  |
-| :---------------------------------------------------------------------------------------------- | :--------------------- |
-| ![full](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=full)   | `?presenceTheme=full`  |
-| ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean) | `?presenceTheme=clean` |
-| ![clean-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=clean-inverted) | `?presenceTheme=clean-inverted` |
-| ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc)       | `?presenceTheme=dc`    |
-| ![dc-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?presenceTheme=dc-inverted)       | `?presenceTheme=dc-inverted`    |
+| Badge                                                                                                         | Theme            | Description                                                                                           | Query                     |
+| :------------------------------------------------------------------------------------------------------------ | :--------------- | :---------------------------------------------------------------------------------------------------- | :------------------------ |
+| ![default](https://discord-md-badge.vercel.app/api/shield/852977967776399400)                                 | Default          | The left part is blurple, the right one is grey                                                       | None (default)            |
+| ![default-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=default-inverted) | Default inverted | The left part is grey, the right one is blurple                                                       | `?theme=default-inverted` |
+| ![full-presence](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=full-presence)       | Full presence    | The color of the entire shield changes depending on your presence                                     | `?theme=full-presence`    |
+| ![clean](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=clean)                       | Clean            | The color of the right part changes depending on your presence, while the left part is always grey    | `?theme=clean`            |
+| ![clean-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=clean-inverted)     | Clean inverted   | The color of the left part changes depending on your presence, while the right part is always grey    | `?theme=clean-inverted`   |
+| ![dc](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=discord)                        | Discord          | The color of the right part changes depending on your presence, while the left part is always blurple | `?theme=discord`          |
+| ![dc-inverted](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=discord-inverted)      | Discord inverted | The color of the left part changes depending on your presence, while the right part is always blurple | `?theme=discord-inverted` |
+| ![grey](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=grey)                         | Grey             | The entire shield is grey                                                                             | `?theme=grey`             |
+| ![blurple](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=blurple)                   | Blurple          | The entire shield is blurple                                                                          | `?theme=blurple`          |
 
-The `presenceTheme` option can be used in conjunction with the `style` option by simply chaining the queries (e.g. `?style=flat&presenceTheme=clean`).
+The `theme` option can be used in conjunction with the `style` option by simply chaining the queries (e.g. `?style=flat&theme=clean`).
 
-Note: the `presenceTheme` option will not work with the social `style`.
+Note: the `theme` option will not work with the social `style`.
 
 ## Endpoints
 
