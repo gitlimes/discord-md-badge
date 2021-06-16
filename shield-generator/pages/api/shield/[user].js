@@ -13,33 +13,21 @@ export default async function handler(req, res) {
 
     // This function gets the shield from shields.io and returns it
     async function makeShield(t, p) {
-      /*
-      if (req.query.compact === "true") {
-        shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
-          t
-        )}&message=${encodeURIComponent(p)}&style=${
-          req.query.style || "for-the-badge"
-        }&color=00ff00&logo=discord&logoColor=${logoColor}`;
-      } else {
-        shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
-          t
-        )}&message=${encodeURIComponent(p)}&style=${
-          req.query.style || "for-the-badge"
-        }&color=00ff00&logo=discord&logoColor=${logoColor}`;
-      }
-      */
-
       let logoColor;
 
-      if (req.query.style === "social") {
-        logoColor = "#5865F2";
+      if (req.query.logoColor) {
+        if (req.query.logoColor === "presence") {
+          logoColor = await getPresenceColor();
+        } else {
+          logoColor = req.query.logoColor;
+        }
       } else {
-        logoColor = "white";
+        if (req.query.style === "social") {
+          logoColor = "#5865F2";
+        } else {
+          logoColor = "white";
+        }
       }
-
-      // These are regular expressions that "find" the background color of the left and right section respectively
-      const leftBgRegEx = new RegExp(`fill="#555"`, "g");
-      const rightBgRegEx = new RegExp(`fill="#00ff00"`, "g");
 
       // This function replaces the selected color with one depending on the presence information
       async function getPresenceColor() {
@@ -51,7 +39,7 @@ export default async function handler(req, res) {
             return "faa81a";
           }
           case "do not disturb": {
-            return "ED4245";
+            return "ed4245";
           }
           default: {
             return "555";
@@ -127,11 +115,21 @@ export default async function handler(req, res) {
           break;
       }
 
-      const shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
-        t
-      )}&message=${encodeURIComponent(p)}&style=${
-        req.query.style || "for-the-badge"
-      }&color=${rightColor}&labelColor=${leftColor}&logo=discord&logoColor=${logoColor}`;
+      let shieldURL;
+
+      if (req.query.compact === "true") {
+        shieldURL = `https://img.shields.io/static/v1?label=&message=${encodeURIComponent(
+          t
+        )}&style=${
+          req.query.style || "for-the-badge"
+        }&color=${rightColor}&labelColor=${leftColor}&logo=discord&logoColor=${logoColor}`;
+      } else {
+        shieldURL = `https://img.shields.io/static/v1?label=${encodeURIComponent(
+          t
+        )}&message=${encodeURIComponent(p)}&style=${
+          req.query.style || "for-the-badge"
+        }&color=${rightColor}&labelColor=${leftColor}&logo=discord&logoColor=${logoColor}`;
+      }
 
       const rawShield = await fetch(shieldURL);
 

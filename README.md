@@ -17,6 +17,8 @@ Done! (Make sure not to leave the server, or this will break)
 
 ## Styling
 
+You can chain parameters by connecting them with `&` (e.g. `?style=flat&theme=clean&compact=true`).
+
 ### `style`
 
 This uses [shields.io](https://shields.io) to generate the badge, so you can choose one of the styles from there by appending `?style=` to the url.
@@ -46,9 +48,23 @@ In the following themes the green color gets replaced by the color corresponding
 | ![grey](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=grey) | Grey | `?theme=grey` |
 | ![blurple](https://discord-md-badge.vercel.app/api/shield/852977967776399400?theme=blurple) | Blurple | `?theme=blurple` |
 
-The `theme` option can be used in conjunction with the `style` option simply by chaining the queries (e.g. `?style=flat&theme=clean`).
-
 Note: the `theme` option will not work with the social `style`.
+
+### `compact`
+
+| Badge                                                                                      | Query           |
+| :----------------------------------------------------------------------------------------- | :-------------- |
+| ![compact](https://discord-md-badge.vercel.app/api/shield/852977967776399400?compact=true) | `?compact=true` |
+
+### `logoColor`
+
+You can pass a color for the logo (the examples below also use `&theme=default-inverted` to show the color better)
+
+| Badge                                                                                                                    | Query                 | Description                                             |
+| :----------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
+| ![presence](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=presence&theme=default-inverted) | `?logoColor=presence` | Changes the color of the logo according to the presence |
+| ![word](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=green&theme=default-inverted)        | `?logoColor=green`    | Supported colors [here](https://shields.io/#colors)     |
+| ![hex](https://discord-md-badge.vercel.app/api/shield/852977967776399400?logoColor=ae81ce&theme=default-inverted)        | `?logoColor=ae81ce`   | Any hex code, without the `#`                           |
 
 ## Endpoints
 
