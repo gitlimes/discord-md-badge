@@ -73,4 +73,4 @@ You can pass a color for the logo (the examples below also use `&theme=default-i
 | Endpoint              | Description                                       | Example response                                                                  |
 | :-------------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------- |
 | `/shield/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat) |
-| `/shield/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "Discord MD badge#9808", "p": "online" }`                                 |
+| `/shield/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "MDbot#9808", "p": "online" }`                                 |
