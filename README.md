@@ -15,6 +15,13 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
 Done! (Make sure not to leave the server, or this will break)
 
+### HTML
+The API returns an SVG image, so you can embed it in your html just like you would with a regular image by doing
+
+```html
+<img src="https://discord-md-badge.vercel.app/api/shield/USERID" />
+```
+
 ## Styling
 
 You can chain parameters by connecting them with `&` (e.g. `?style=flat&theme=clean&compact=true`).
