@@ -2,7 +2,7 @@
 
 Add to your GitHub readme a badge that shows your Discord username and presence!
 
-![](https://discord-md-badge.vercel.app/api/shield/852977967776399400)
+![](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400)
 
 ## Set up
 
@@ -17,6 +17,8 @@ The set up will vary depending on what type of account you want to monitor
 
    replacing `USERID` with [your Discord user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/406125028065804289)`)
 
+![](https://discord-md-badge.vercel.app/api/shield/406125028065804289)
+
 Done! (Make sure not to leave the server, or this will break)
 
 ### Bot account
@@ -26,7 +28,9 @@ Done! (Make sure not to leave the server, or this will break)
 
    `![](https://discord-md-badge.vercel.app/api/shield/bot/bot/BOTID)`
 
-   replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/bot/bot406125028065804289)`)
+   replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400)`)
+   
+![](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400)
 
 Done!
 
