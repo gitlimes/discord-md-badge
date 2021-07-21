@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     // This function gets the user information from the Discord API
     async function getUserInfo(userID) {
       const rawUserInfo = await fetch(
-        `http://localhost:3581/md-shield/bot/json/?u=${userID}`
+        `http://167.71.241.147:3581/md-shield/bot/json/?u=${userID}`
       );
 
       const userInfo = await rawUserInfo.json();
