@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   return new Promise((resolve) => {
     async function getUserInfo(userID) {
       const rawUserInfo = await fetch(
-        `http://167.71.241.147:3581/md-shield/json/?u=${userID}`
+        `http://localhost:3581/md-shield/bot/json/?u=${userID}`
       );
 
       const userInfo = await rawUserInfo.json();
