@@ -23,7 +23,7 @@ Done! (Make sure not to leave the server, or this will break)
 
 ### Bot account
 
-1. DM me (montylion#3581) your bot's invite link
+1. DM me (![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&compact=true)) your bot's invite link
 2. Add to your readme
 
    `![](https://discord-md-badge.vercel.app/api/shield/bot/bot/BOTID)`
