@@ -6,12 +6,12 @@ Add to your GitHub readme a badge that shows your Discord username and presence!
 
 ## Set up
 
-The set up will vary depending on what type of account you want to monitor
+The set up process will vary depending on what type of account you want to monitor:
 
 ### User account
 
 1. Join the [Discord server](https://discord.gg/zkspfFwqDg) (required, as that's where the bot gets your presence information from)
-2. Add to your readme
+2. Add to the readme
 
    `![](https://discord-md-badge.vercel.app/api/shield/USERID)`
 
@@ -24,7 +24,7 @@ Done! (Make sure not to leave the server, or this will break)
 ### Bot account
 
 1. DM me (![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&compact=true)) your bot's invite link
-2. Add to your readme
+2. Add to the readme
 
    `![](https://discord-md-badge.vercel.app/api/shield/bot/bot/BOTID)`
 
@@ -34,7 +34,7 @@ Done! (Make sure not to leave the server, or this will break)
 
 Done!
 
-### HTML
+## HTML
 
 The API returns an SVG image, so you can embed it in your html just like you would with a regular image by doing
 
@@ -93,6 +93,12 @@ You can pass a color for the logo (the examples below also use `&theme=default-i
 | ![word](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400?logoColor=orange&theme=default-inverted)       | `?logoColor=orange`   | Supported colors [here](https://shields.io/#colors)     |
 | ![hex](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400?logoColor=ae81ce&theme=default-inverted)        | `?logoColor=ae81ce`   | Any hex code, without the `#`                           |
 
+## I've added this to my GitHub bio and it doesn't work!
+This __won't__ work in bios, only in profile readmes (and any other part of GitHub that supports markdown).
+[Here](https://mansik16.medium.com/adding-a-readme-to-your-github-profile-2ec88bfedeb)'s some info on what a profile readme is and how to set it up.
+
+For any questions feel free to contact me (![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&compact=true), [hey@montylion.dev](mailto:hey@montylion.dev))
+
 ## Endpoints
 
 (Preceded by `https://discord-md-badge.vercel.app/api/shield`)
@@ -103,3 +109,4 @@ You can pass a color for the logo (the examples below also use `&theme=default-i
 | `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "MDbot#9808", "p": "online" }`                                            |
 
 The above endpoints are also valid for bots, if preceded by `/bot` (e.g. `/bot/json/USERID`)
+
