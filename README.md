@@ -26,7 +26,7 @@ Done! (Make sure not to leave the server, or this will break)
 1. DM me (![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&compact=true)) your bot's invite link
 2. Add to the readme
 
-   `![](https://discord-md-badge.vercel.app/api/shield/bot/bot/BOTID)`
+   `![](https://discord-md-badge.vercel.app/api/shield/bot/BOTID)`
 
    replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400)`)
    
@@ -106,7 +106,7 @@ For any questions feel free to contact me (![](https://discord-md-badge.vercel.a
 | Endpoint       | Description                                       | Example response                                                                  |
 | :------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------- |
 | `/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/852977967776399400?style=flat) |
-| `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "MDbot#9808", "p": "online" }`                                            |
+| `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "montylion#3581", "p": "online" }`                                        |
 
 The above endpoints are also valid for bots, if preceded by `/bot` (e.g. `/bot/json/USERID`)
 
