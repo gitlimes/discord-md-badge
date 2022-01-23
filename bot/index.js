@@ -60,7 +60,7 @@ app.get("/md-shield/bot/json/", (req, res) => {
     // If the bot isn't in the guild, we tell the dev to send me the invite, since we can't get the info otherwise
     res.status(418).json({
       t: "Error",
-      p: "For this to work, you need to DM me (montylion#3581) the invite for your bot.",
+      p: "For this to work, you need to DM me (monty#9398) the invite for your bot.",
     });
   }
 });

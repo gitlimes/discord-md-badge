@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/montylion/discord-md-badge.git"
+    "url": "git+https://github.com/ashmonty/discord-md-badge.git"
   },
   "keywords": [
     "markdown",
@@ -17,12 +17,12 @@
     "badge-generator",
     "profile-readme"
   ],
-  "author": "montylion",
+  "author": "ashmonty",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/montylion/discord-md-badge/issues"
+    "url": "https://github.com/ashmonty/discord-md-badge/issues"
   },
-  "homepage": "https://github.com/montylion/discord-md-badge#readme",
+  "homepage": "https://github.com/ashmonty/discord-md-badge#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
     "express": "^4.17.1"
