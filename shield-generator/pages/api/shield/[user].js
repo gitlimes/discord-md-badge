@@ -140,6 +140,10 @@ export default async function handler(req, res) {
       const usernameRegExp = new RegExp(`${t.toUpperCase()}`, "g");
       let svgShieldFix = svgShield.replace(usernameRegExp, t);
 
+      /* Here we fix the link to the discord server being bolded.
+      This fix is jank, but so is the rest of the codebase honestly. Might rewrite from scratch soon. */
+      svgShieldFix = svgShieldFix.replaceAll("HTTPS://DISCORD.GG/ZKSPFFWQDG", "https://discord.gg/zkspfFwqDg");
+
       // Here we make the username bold
       const boldRegEx = new RegExp(`fill="#fff">${t}</text>`, "g");
       svgShieldFix = svgShieldFix.replace(
