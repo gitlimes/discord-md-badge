@@ -52,8 +52,6 @@ export default async function handler(req, res) {
         blurple: ["5865F2", "5865F2"],
       };
 
-      
-
       if (logoColor) {
         logoColor = logoColor === "presence" ? presenceColors[p] : logoColor;
       } else {

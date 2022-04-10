@@ -28,8 +28,8 @@ Done! (Make sure not to leave the server, or this will break)
 
    `![](https://discord-md-badge.vercel.app/api/shield/BOTID?bot=true)`
 
-   replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/bot/852977967776399400)`)
-   
+   replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true)`)
+
 ![](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true)
 
 Done!
@@ -50,8 +50,8 @@ You can chain parameters by connecting them with `&` (e.g. `?style=flat&theme=cl
 
 This uses [shields.io](https://shields.io) to generate the badge, so you can choose one of the styles from there by appending `?style=` to the url.
 
-| Badge                                                                                                   | Style         | Query                |
-| :------------------------------------------------------------------------------------------------------ | :------------ | :------------------- |
+| Badge                                                                                                        | Style         | Query                |
+| :----------------------------------------------------------------------------------------------------------- | :------------ | :------------------- |
 | ![flat](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&style=flat)               | flat          | `?style=flat`        |
 | ![flat-square](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&style=flat-square) | flat-square   | `?style=flat-square` |
 | ![for-the-badge (default)](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true)       | for-the-badge | None (default)       |
@@ -79,22 +79,23 @@ Note: the `theme` option will not work with the social `style`.
 
 ### `compact`
 
-| Badge                                                                                          | Query           |
-| :--------------------------------------------------------------------------------------------- | :-------------- |
+| Badge                                                                                               | Query           |
+| :-------------------------------------------------------------------------------------------------- | :-------------- |
 | ![compact](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&compact=true) | `?compact=true` |
 
 ### `logoColor`
 
 You can pass a color for the logo (the examples below also use `&theme=default-inverted` to show the color better)
 
-| Badge                                                                                                                        | Query                 | Description                                             |
-| :--------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
+| Badge                                                                                                                             | Query                 | Description                                             |
+| :-------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
 | ![presence](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&logoColor=presence&theme=default-inverted) | `?logoColor=presence` | Changes the color of the logo according to the presence |
-| ![word](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&logoColor=pink&theme=default-inverted)       | `?logoColor=pink`   | Supported colors [here](https://shields.io/#colors)     |
+| ![word](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&logoColor=pink&theme=default-inverted)         | `?logoColor=pink`     | Supported colors [here](https://shields.io/#colors)     |
 | ![hex](https://discord-md-badge.vercel.app/api/shield/852977967776399400?bot=true&logoColor=ff6b6b&theme=default-inverted)        | `?logoColor=ff6b6b`   | Any hex code, without the `#`                           |
 
 ## I've added this to my GitHub bio and it doesn't work!
-This __won't__ work in bios, only in profile readmes (and any other part of GitHub that supports markdown).
+
+This **won't** work in bios, only in profile readmes (and any other part of GitHub that supports markdown).
 [Here](https://mansik16.medium.com/adding-a-readme-to-your-github-profile-2ec88bfedeb)'s some info on what a profile readme is and how to set it up.
 
 For any questions feel free to contact me (![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat&compact=true), [mdbadge@ashmonty.com](mailto:mdbadge@ashmonty.com))
@@ -106,6 +107,6 @@ For any questions feel free to contact me (![](https://discord-md-badge.vercel.a
 | Endpoint       | Description                                       | Example response                                                                  |
 | :------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------- |
 | `/USERID`      | returns a shield in the SVG format                | ![](https://discord-md-badge.vercel.app/api/shield/406125028065804289?style=flat) |
-| `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "monty#9398", "p": "online" }`                                        |
+| `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "monty#9398", "p": "online" }`                                            |
 
 The above endpoints are also valid for bots, by adding the `?bot=true` query parameter
