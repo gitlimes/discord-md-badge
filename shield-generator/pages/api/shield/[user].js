@@ -61,7 +61,6 @@ export default async function handler(req, res) {
       }
 
       const colors = themes[theme] || themes["default"];
-      console.log(colors)
 
       let text;
       // if compact is true, we set the text accordingly
@@ -82,15 +81,15 @@ export default async function handler(req, res) {
       const svgShield = await rawShield.text();
 
       // fix the username and invite url being capitalized
-      let svgShieldFix = svgShield.replaceAll(t.toUpperCase(), t);
-      svgShieldFix = svgShieldFix.replaceAll(
-        "HTTPS://DISCORD.GG/ZKSPFFWQDG",
+      let svgShieldFix = svgShield.replace(new RegExp(t.toUpperCase(), "g"), t);
+      svgShieldFix = svgShieldFix.replace(
+        new RegExp("HTTPS://DISCORD.GG/ZKSPFFWQDG", "g"),
         "https://discord.gg/zkspfFwqDg"
       );
 
       // make the username bold
-      svgShieldFix = svgShieldFix.replaceAll(
-        `fill="#fff">${t}</text>`,
+      svgShieldFix = svgShieldFix.replace(
+        new RegExp(`fill="#fff">${t}</text>`, "g"),
         `fill="#fff" font-weight="bold">${t}</text>`
       );
 
