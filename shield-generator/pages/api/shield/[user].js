@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         }json?u=${user}`
       ).catch((e) => console.error("[err]", e, Date.now()));
       // If that fails, try fetching from my droplet
-      if (!rawUserInfo?.ok) {
+      if (rawUserInfo.status !== 200 && rawUserInfo.status !== 418) {
         console.warn("[warn] using droplet", Date.now());
         rawUserInfo = await fetch(
           `http://167.71.241.147:3581/md-shield/${
