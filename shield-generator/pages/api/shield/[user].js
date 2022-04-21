@@ -30,7 +30,13 @@ export default async function handler(req, res) {
 
     // get the shield from shields.io and returns it
     async function makeShield() {
-      const { t, p } = await getUserInfo();
+      let { t, p } = await getUserInfo();
+      
+      // Quick temp overwrite
+      if (t === "Error") {
+        p = "Check readme for setup info";
+      }
+
       // a lookup table for the presence colors
       const presenceColors = {
         online: "3ba55d",
