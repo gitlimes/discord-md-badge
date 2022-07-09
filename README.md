@@ -1,12 +1,14 @@
 <h1 style="text-align: center">Discord Profile Markdown badge</h1>
 
-Add to your GitHub readme a badge that shows your Discord username and presence!
+Add to your GitHub readme a badge that shows your Discord username and presence, or a server invite!
 
 ![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)
 
+[![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg)
+
 ## Set up
 
-The set up process will vary depending on what type of account you want to monitor:
+The set up process will vary depending on the use:
 
 ### User account
 
@@ -21,6 +23,15 @@ The set up process will vary depending on what type of account you want to monit
 
 Done! (Make sure not to leave the server, or this will break)
 
+### Server invite
+
+1. Create an invite for your server, making sure to disable expiration (it will look something like this: `https://discord.gg/INVITEID`)
+2. Add to the readme
+
+   `[![](https://dcbadge.vercel.app/api/server/INVITEID)](https://discord.gg/INVITEID)`
+
+Done!
+
 ### Bot account
 
 1. DM me (![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat&compact=true)) your bot's invite link
@@ -33,14 +44,6 @@ Done! (Make sure not to leave the server, or this will break)
 ![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)
 
 Done!
-
-## HTML
-
-The API returns an SVG image, so you can embed it in your html just like you would with a regular image by doing
-
-```html
-<img src="https://dcbadge.vercel.app/api/shield/USERID" />
-```
 
 ## Styling
 
@@ -110,3 +113,11 @@ For any questions feel free to contact me (![](https://dcbadge.vercel.app/api/sh
 | `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "monty#9398", "p": "online" }`                                            |
 
 The above endpoints are also valid for bots, by adding the `?bot=true` query parameter
+
+## HTML
+
+The API returns an SVG image, so you can embed it in your html just like you would with a regular image by doing
+
+```html
+<img src="https://dcbadge.vercel.app/api/shield/USERID" />
+```
