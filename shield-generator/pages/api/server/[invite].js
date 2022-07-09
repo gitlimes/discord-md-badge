@@ -1,5 +1,3 @@
-//RPdtRV6p
-
 export default async function handler(req, res) {
   // return a promise to avoid stalled requests
   return new Promise((resolve) => {
