@@ -29,6 +29,10 @@ Done! (Make sure not to leave the server, or this will break)
 2. Add to the readme
 
    `[![](https://dcbadge.vercel.app/api/server/INVITEID)](https://discord.gg/INVITEID)`
+   
+   replacing `INVITEID` with the part of the invite after `https://discord.gg/`
+   
+[![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg)
 
 Done!
 
