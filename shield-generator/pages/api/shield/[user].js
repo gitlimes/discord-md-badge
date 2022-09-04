@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     async function getUserInfo() {
       // try fetching from my home server
       let rawUserInfo = await fetch(
-        `http://discord-md-badge.ashm.dev/md-shield/${
+        `https://discord-md-badge.ashm.dev/md-shield/${
           bot ? "bot/" : ""
         }json?u=${user}`
       ).catch((e) => console.error("[err]", e, Date.now()));
