@@ -90,6 +90,8 @@ export default async function handler(req, res) {
         new RegExp(`fill="#fff">${t}</text>`, "g"),
         `fill="#fff" font-weight="bold">${t}</text>`
       );
+      
+      res.setHeader('Cache-Control', 's-maxage=1200');
 
       res.setHeader("Content-Type", "image/svg+xml");
       res.status(200).send(svgShieldFix);
