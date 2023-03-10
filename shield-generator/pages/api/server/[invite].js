@@ -17,22 +17,25 @@ export default async function handler(req, res) {
       ).catch((e) => console.error("[err]", e, Date.now()));
       const serverInfo = await apiResult.json();
 
-      const renderData = {
-        t: serverInfo.guild.name,
-        p: `${serverInfo.approximate_member_count} members`,
-      };
-      
+      let renderData = {};
+      if (serverInfo.code === 10006) {
+        renderData = {
+          t: "Error",
+          p: "Unknown invite",
+        };
+      } else {
+        renderData = {
+          t: serverInfo.guild.name,
+          p: `${serverInfo.approximate_member_count} members`,
+        };
+      }
+
       return renderData;
     }
 
     // get the shield from shields.io and returns it
     async function makeShield() {
       let { t, p } = await getServerInfo();
-      
-      // Quick temp overwrite
-      if (t === "Error") {
-        p = "Check readme for setup info";
-      }
 
       // a lookup table for the presence colors
       const presenceColors = {
@@ -90,9 +93,8 @@ export default async function handler(req, res) {
         new RegExp(`fill="#fff">${t}</text>`, "g"),
         `fill="#fff" font-weight="bold">${t}</text>`
       );
-      
-      res.setHeader('Cache-Control', 's-maxage=1200');
 
+      res.setHeader("Cache-Control", "s-maxage=1200");
       res.setHeader("Content-Type", "image/svg+xml");
       res.status(200).send(svgShieldFix);
     }
