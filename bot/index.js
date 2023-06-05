@@ -50,4 +50,3 @@ client.on("ready", () => {
     console.log(`Listening on http://localhost:${port}`);
   });
 });
-ì

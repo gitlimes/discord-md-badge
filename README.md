@@ -105,7 +105,7 @@ You can pass a color for the logo (the examples below also use `&theme=default-i
 This **won't** work in bios, only in profile readmes (and any other part of GitHub that supports markdown).
 [Here](https://mansik16.medium.com/adding-a-readme-to-your-github-profile-2ec88bfedeb)'s some info on what a profile readme is and how to set it up.
 
-For any questions feel free to contact me (![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat&compact=true), [mdbadge@ashm.dev](mailto:mdbadge@ashm.dev))
+For any questions feel free to contact me (![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat&compact=true), [mdbadge@limes.pink](mailto:mdbadge@limes.pink))
 
 ## Endpoints
 
