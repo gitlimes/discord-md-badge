@@ -31,7 +31,12 @@ export default async function handler(req, res) {
     // get the shield from shields.io and returns it
     async function makeShield() {
       let { t, p } = await getUserInfo();
-      
+
+      if (/#0$/.test(t)) {
+        // new usernames, no discriminator (https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names)
+        t = `@${t.replace(/#0$/, "")}`
+      }
+
       // Quick temp overwrite
       if (t === "Error") {
         p = "Check readme for setup info";
