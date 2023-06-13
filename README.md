@@ -1,53 +1,42 @@
-<h1 style="text-align: center">Discord Profile Markdown badge</h1>
+<h1 style="text-align: center">Discord Markdown badge</h1>
 
-Add to your GitHub readme a badge that shows your Discord username and presence, or a server invite!
+A customizable Discord badge that shows your Discord account, a server invite, or a bot account.
 
-![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)
-
-[![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg)
+| [User account](#user-account) | [Server invite](#server-invite) | [Bot account](#bot-account) |
+|:-:|:-:|:-:|
+| ![](https://dcbadge.vercel.app/api/shield/406125028065804289) | [![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg) | ![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true) | 
 
 ## Set up
 
 The set up process will vary depending on the use:
 
-### User account
+### User account&nbsp;&nbsp;&nbsp;![](https://dcbadge.vercel.app/api/shield/406125028065804289)
 
 1. Join the [Discord server](https://discord.gg/zkspfFwqDg) (required, as that's where the bot gets your presence information from)
-2. Add to the readme
+2. Your shield will become available at `https://dcbadge.vercel.app/api/shield/USERID`
+<br>(replace `USERID` with [your Discord user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-))
 
-   `![](https://dcbadge.vercel.app/api/shield/USERID)`
+To embed it in the readme, insert it like this:
+<br>`![](https://dcbadge.vercel.app/api/shield/USERID)`
 
-   replacing `USERID` with [your Discord user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://dcbadge.vercel.app/api/shield/406125028065804289)`)
+### Server invite&nbsp;&nbsp;&nbsp;([![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg))
 
-![](https://dcbadge.vercel.app/api/shield/406125028065804289)
+1. Create an invite for your server; make sure to disable expiration!
+2. Your shield will become available at `https://dcbadge.vercel.app/api/server/INVITEID`
+<br>(replace `INVITEID` with the invite id (`https://discord.gg/INVITEID`)
 
-Done! (Make sure not to leave the server, or this will break)
+To embed it in the readme, insert it like this:
+<br>`[![](https://dcbadge.vercel.app/api/server/INVITEID)](https://discord.gg/INVITEID)`
 
-### Server invite
-
-1. Create an invite for your server, making sure to disable expiration (it will look something like this: `https://discord.gg/INVITEID`)
-2. Add to the readme
-
-   `[![](https://dcbadge.vercel.app/api/server/INVITEID)](https://discord.gg/INVITEID)`
-   
-   replacing `INVITEID` with the part of the invite after `https://discord.gg/`
-   
-[![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg)
-
-Done!
-
-### Bot account
+### Bot account&nbsp;&nbsp;&nbsp;![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)
 
 1. DM me (![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat&compact=true)) your bot's invite link
-2. Add to the readme
+2. Wait for me to read the DM (it might take some time as it's a manual process)
+3. Your shield will become available at `https://dcbadge.vercel.app/api/shield/BOTID?bot=true`
+<br>(replace `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-))
 
-   `![](https://dcbadge.vercel.app/api/shield/BOTID?bot=true)`
-
-   replacing `BOTID` with [your Discord bot's user ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) (e.g. `![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)`)
-
-![](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true)
-
-Done!
+To embed it in the readme, insert it like this:
+<br>`![](https://dcbadge.vercel.app/api/shield/BOTID?bot=true)`
 
 ## Styling
 
@@ -86,13 +75,15 @@ Note: the `theme` option will not work with the social `style`.
 
 ### `compact`
 
+Makes the badge more compact, but loses the online status text/server member count
+
 | Badge                                                                                               | Query           |
 | :-------------------------------------------------------------------------------------------------- | :-------------- |
 | ![compact](https://dcbadge.vercel.app/api/shield/852977967776399400?bot=true&compact=true) | `?compact=true` |
 
 ### `logoColor`
 
-You can pass a color for the logo (the examples below also use `&theme=default-inverted` to show the color better)
+You can pass a color for the logo (the examples below use `&theme=default-inverted` to make the change more evident)
 
 | Badge                                                                                                                             | Query                 | Description                                             |
 | :-------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
@@ -107,20 +98,9 @@ This **won't** work in bios, only in profile readmes (and any other part of GitH
 
 For any questions feel free to contact me (![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat&compact=true), [mdbadge@limes.pink](mailto:mdbadge@limes.pink))
 
-## Endpoints
-
-(Preceded by `https://dcbadge.vercel.app/api/shield`)
-
-| Endpoint       | Description                                       | Example response                                                                  |
-| :------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------- |
-| `/USERID`      | returns a shield in the SVG format                | ![](https://dcbadge.vercel.app/api/shield/406125028065804289?style=flat) |
-| `/json/USERID` | returns the raw JSON used to generate the shields | `{ "t": "monty#9398", "p": "online" }`                                            |
-
-The above endpoints are also valid for bots, by adding the `?bot=true` query parameter
-
 ## HTML
 
-The API returns an SVG image, so you can embed it in your html just like you would with a regular image by doing
+The API returns an SVG image, so you can embed it in your html just like you would with any other svg.
 
 ```html
 <img src="https://dcbadge.vercel.app/api/shield/USERID" />
