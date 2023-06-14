@@ -1,9 +1,14 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+
 const express = require("express");
+const favicon = require('serve-favicon')
+const path = require('path')
 
 const app = express();
 const port = 3581;
+
+app.use(favicon(path.join(__dirname, 'assets', 'favicon.ico')))
 
 client.login(process.env.DC_TOKEN);
 
@@ -36,6 +41,10 @@ function getUserInfo(req, res, isBot) {
     });
   }
 }
+
+app.get('/', (_req, res) => {
+  res.send('The backend for my discord badge service!\n\nSource code at: https://github.com/gitlimes/discord-md-badge/tree/main/bot')
+})
 
 app.get("/md-shield/json/", (req, res) => {
   getUserInfo(req, res);
