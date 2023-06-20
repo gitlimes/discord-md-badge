@@ -1,6 +1,6 @@
 <h1 style="text-align: center">Discord Markdown badge</h1>
 
-A customizable Discord badge that shows your Discord account, a server invite, or a bot account.
+A customizable badge that shows your Discord account, a server invite, or a bot account.
 
 | [User account](#user-account) | [Server invite](#server-invite) | [Bot account](#bot-account) |
 |:-:|:-:|:-:|
@@ -19,7 +19,7 @@ The set up process will vary depending on the use:
 To embed it in the readme, insert it like this:
 <br>`![](https://dcbadge.vercel.app/api/shield/USERID)`
 
-### Server invite&nbsp;&nbsp;&nbsp;([![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg))
+### Server invite&nbsp;&nbsp;&nbsp;[![](https://dcbadge.vercel.app/api/server/zkspfFwqDg)](https://discord.gg/zkspfFwqDg)
 
 1. Create an invite for your server; make sure to disable expiration!
 2. Your shield will become available at `https://dcbadge.vercel.app/api/server/INVITEID`
