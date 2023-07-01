@@ -12,7 +12,7 @@ app.use(favicon(path.join(__dirname, 'assets', 'favicon.ico')))
 
 client.login(process.env.DC_TOKEN);
 
-function getUserInfo(req, res, isBot) {
+async function getUserInfo(req, res, isBot) {
   const userID = req.query.u;
 
   // If the user is a bot, we check the bot server, else the regular server. The GUILD_ID env var overrides this
@@ -21,9 +21,12 @@ function getUserInfo(req, res, isBot) {
 
   const guild = client.guilds.cache.get(guildID);
 
+  await guild.members.fetch();
+
   // We check if the user is in the server (https://discord.gg/zkspfFwqDg)
   if (guild.member(userID)) {
     const user = client.users.cache.get(userID);
+
     let presence = user.presence.status;
     const tag = user.tag;
 
