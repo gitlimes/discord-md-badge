@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
     async function getUserInfo() {
       let rawUserInfo = await fetch(
-        `https://discord-md-badge.limes.pink/md-shield/${bot ? "bot/" : ""
+        `https://dcbadge.limesquash.limes.pink/md-shield/${bot ? "bot/" : ""
         }json?u=${user}`
       ).catch((e) => console.error("[err]", e, Date.now()));
 
