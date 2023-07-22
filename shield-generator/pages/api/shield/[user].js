@@ -18,6 +18,11 @@ export default async function handler(req, res) {
       return userInfo;
     }
 
+    // stolen from https://stackoverflow.com/a/6969486
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    }
+
     // get the shield from shields.io and returns it
     async function makeShield() {
       let { t, p } = await getUserInfo();
@@ -81,7 +86,8 @@ export default async function handler(req, res) {
       const svgShield = await rawShield.text();
 
       // fix the username and invite url being capitalized
-      let svgShieldFix = svgShield.replace(new RegExp(t.toUpperCase(), "g"), t);
+      let svgShieldFix = svgShield.replace(new RegExp(escapeRegExp(t.toUpperCase()), "g"), t);
+
       svgShieldFix = svgShieldFix.replace(
         new RegExp("HTTPS://DISCORD.GG/ZKSPFFWQDG", "g"),
         "https://discord.gg/zkspfFwqDg"
@@ -89,7 +95,7 @@ export default async function handler(req, res) {
 
       // make the username bold
       svgShieldFix = svgShieldFix.replace(
-        new RegExp(`fill="#fff">${t}</text>`, "g"),
+        new RegExp(`fill="#fff">${escapeRegExp(t)}</text>`, "g"),
         `fill="#fff" font-weight="bold">${t}</text>`
       );
 
