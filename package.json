@@ -1,0 +1,19 @@
+{
+  "name": "discord-md-badge",
+  "version": "2.0.0",
+  "dependencies": {
+    "bufferutil": "^4.0.8",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "utf-8-validate": "^6.0.3",
+    "zlib-sync": "^0.1.9"
+  },
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^9.2.0"
+  }
+}
