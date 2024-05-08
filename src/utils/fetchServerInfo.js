@@ -1,7 +1,20 @@
+import "dotenv/config";
+
 export default async function fetchServerInfo(invite) {
   const serverFetch = await fetch(
-    `https://discord.com/api/v9/invites/${invite}?with_counts=true&with_expiration=true`
+    `https://discord.com/api/v10/invites/${invite}?with_counts=true&with_expiration=true`,
+    {
+      headers: {
+        authentication: `Bot ${process.env.DC_TOKEN}`,
+      },
+    }
   );
+
+  if (!serverFetch.ok) {
+    return {
+      error: "fetch error",
+    };
+  }
 
   const server = await serverFetch.json();
 
@@ -11,8 +24,14 @@ export default async function fetchServerInfo(invite) {
       memberCount: server.approximate_member_count,
     };
   } else {
-    return {
-      error: "Invalid invite",
-    };
+    if (server.retry_after) {
+      return {
+        error: "rate limited",
+      };
+    } else {
+      return {
+        error: "invalid invite",
+      };
+    }
   }
 }
