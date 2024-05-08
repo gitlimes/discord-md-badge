@@ -50,8 +50,9 @@ client.once(Events.ClientReady, (readyClient) => {
     res.status(200).send(shield);
   });
 
-  app.get("/api/server/:invite", async (req, res) => {
-    const { invite } = req.params;
+  app.get("/api/server/:invite*", async (req, res) => {
+    const invite = req.params.invite + req.params?.["0"];
+
     const { compact, theme, style, logoColor } = req.query;
 
     const serverInfo = await fetchServerInfo(invite);
