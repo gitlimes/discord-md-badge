@@ -14,7 +14,7 @@ export default async function fetchUserStatus(discordClient, userID, bot) {
       withPresences: true,
     });
 
-    if (Object.keys(member).length === 0) {
+    if (Object.keys(await member).length === 0) {
       throw new Error("member not found");
     }
 
@@ -27,7 +27,7 @@ export default async function fetchUserStatus(discordClient, userID, bot) {
       username = `@${username}`;
     }
 
-    const { status } = await member.presence;
+    const status = (await member?.presence?.status) || "offline";
 
     const userInfo = {
       username,
@@ -36,6 +36,7 @@ export default async function fetchUserStatus(discordClient, userID, bot) {
 
     return userInfo;
   } catch (e) {
+    console.log(e);
     return {
       error: "member not found",
     };
