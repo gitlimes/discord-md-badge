@@ -57,7 +57,7 @@ client.once(Events.ClientReady, (readyClient) => {
     const serverInfo = await fetchServerInfo(invite);
 
     if (serverInfo.error) {
-      return res.status(400).send(userInfo.error);
+      return res.status(400).send(serverInfo.error);
     }
 
     const shield = await generateShield({
