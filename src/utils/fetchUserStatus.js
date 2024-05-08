@@ -14,7 +14,7 @@ export default async function fetchUserStatus(discordClient, userID, bot) {
       withPresences: true,
     });
 
-    if (!member.length) {
+    if (Object.keys(member).length === 0) {
       throw new Error("member not found");
     }
 
