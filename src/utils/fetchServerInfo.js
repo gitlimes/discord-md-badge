@@ -19,6 +19,7 @@ export default async function fetchServerInfo(invite) {
     {
       headers: {
         authentication: `Bot ${process.env.DC_TOKEN}`,
+        "User-Agent": "DiscordBot (https://github.com/gitlimes/discord-md-badge, v2.0.0)"
       },
     }
   );
