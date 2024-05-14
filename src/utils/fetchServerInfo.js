@@ -19,13 +19,14 @@ export default async function fetchServerInfo(invite) {
     {
       headers: {
         authentication: `Bot ${process.env.DC_TOKEN}`,
-        "User-Agent": "DiscordBot (https://github.com/gitlimes/discord-md-badge, v2.0.0)"
+        "User-Agent":
+          "DiscordBot (https://github.com/gitlimes/discord-md-badge, v2.0.0)",
       },
     }
   );
 
   if (!serverFetch.ok) {
-    console.log("not ok...", JSON.stringify(await serverFetch.json()));
+    return { error: `fetch error, potentially ratelimited?\ncode: ${serverFetch.status}` };
   }
 
   const server = await serverFetch.json();
