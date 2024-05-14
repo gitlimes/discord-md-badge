@@ -4,7 +4,7 @@ import NodeFetchCache, { FileSystemCache } from "node-fetch-cache";
 
 const fetch = NodeFetchCache.create({
   shouldCacheResponse: (response) => response.ok,
-  cache: new FileSystemCache({ ttl: 15 * 60 * 1000 }),
+  cache: new FileSystemCache({ ttl: 4 * 3600000 }), // 4 hours.
 });
 
 export default async function fetchServerInfo(invite) {
@@ -15,18 +15,21 @@ export default async function fetchServerInfo(invite) {
   const inviteID = inviteRegex.exec(invite)?.groups?.code ?? invite;
 
   const serverFetch = await fetch(
-    `https://discord.com/api/v10/invites/${inviteID}?with_counts=true&with_expiration=true`,
+    `${process.env.FETCH_PROXY_URL}https://discord.com/api/v10/invites/${inviteID}?with_counts=true&with_expiration=true`,
     {
       headers: {
         authentication: `Bot ${process.env.DC_TOKEN}`,
+        origin: process.env.FETCH_PROXY_ORIGIN_HEADER,
         "User-Agent":
-          "DiscordBot (https://github.com/gitlimes/discord-md-badge, v2.0.0)",
+          "discord-md-badge (https://github.com/gitlimes/discord-md-badge, v2.0.0)",
       },
     }
   );
 
   if (!serverFetch.ok) {
-    return { error: `fetch error, potentially ratelimited?\ncode: ${serverFetch.status}` };
+    return {
+      error: `fetch error, potentially ratelimited?\ncode: ${serverFetch.status}`,
+    };
   }
 
   const server = await serverFetch.json();
