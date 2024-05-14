@@ -6,6 +6,7 @@
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "node-fetch-cache": "^4.1.1",
     "utf-8-validate": "^6.0.3",
     "zlib-sync": "^0.1.9"
   },

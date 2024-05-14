@@ -1,5 +1,12 @@
 import "dotenv/config";
 
+import NodeFetchCache, { FileSystemCache } from "node-fetch-cache";
+
+const fetch = NodeFetchCache.create({
+  shouldCacheResponse: (response) => response.ok,
+  cache: new FileSystemCache({ ttl: 15 * 60 * 1000 }),
+});
+
 export default async function fetchServerInfo(invite) {
   // https://github.com/discordjs/discord.js/blob/e673b3c129f288f9f271e0b991d16dc2901cdc8a/packages/discord.js/src/structures/Invite.js#L21C3-L21C104
   const inviteRegex =
@@ -17,9 +24,7 @@ export default async function fetchServerInfo(invite) {
   );
 
   if (!serverFetch.ok) {
-    return {
-      error: "fetch error",
-    };
+    console.log("not ok...", JSON.stringify(await serverFetch.json()));
   }
 
   const server = await serverFetch.json();
