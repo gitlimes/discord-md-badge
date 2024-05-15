@@ -87,7 +87,9 @@ client.once(Events.ClientReady, (readyClient) => {
       res.setHeader("Content-Type", "image/svg+xml");
       res.status(200).send(shield);
     } else {
-      res.status(429).send("ratelimited.");
+      res.status(429).send(`ratelimited until ${new Date(
+        stopRequestsUntil * 1000
+      )}. Thanks Discord`);
     }
   });
 
