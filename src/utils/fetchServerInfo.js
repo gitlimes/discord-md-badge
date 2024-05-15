@@ -28,7 +28,8 @@ export default async function fetchServerInfo(invite) {
 
   if (!serverFetch.ok) {
     return {
-      error: `fetch error, potentially ratelimited?\ncode: ${serverFetch.status}`,
+      error: `fetch error: ${serverFetch.status}, ${serverFetch.statusText}`,
+      retryAfter: serverFetch.headers.get("retry-after"),
     };
   }
 
