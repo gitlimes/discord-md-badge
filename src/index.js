@@ -50,52 +50,33 @@ client.once(Events.ClientReady, (readyClient) => {
     res.status(200).send(shield);
   });
 
-  let stopRequestsUntil = 0;
   app.get("/api/server/:invite*", async (req, res) => {
-    if (
-      !stopRequestsUntil ||
-      Math.round(Date.now() / 1000) > stopRequestsUntil
-    ) {
-      const invite = req.params.invite + req.params?.["0"];
+    const invite = req.params.invite + req.params?.["0"];
 
-      const { compact, theme, style, logoColor } = req.query;
+    const { compact, theme, style, logoColor } = req.query;
 
-      const serverInfo = await fetchServerInfo(invite);
+    const serverInfo = await fetchServerInfo(invite);
 
-      if (serverInfo.error) {
-        if (serverInfo.retryAfter) {
-          stopRequestsUntil =
-            Math.round(Date.now() / 1000) + Number(serverInfo.retryAfter);
-          console.log(
-            `Pausing requests until UNIX ${stopRequestsUntil} (${new Date(
-              stopRequestsUntil * 1000
-            )})`
-          );
-        }
-        return res.status(400).send(serverInfo.error);
-      }
-
-      const shield = await generateShield({
-        label: serverInfo.name,
-        message: `${serverInfo.memberCount} members`,
-        compact,
-        theme,
-        style,
-        logoColor,
-      });
-
-      res.setHeader("Content-Type", "image/svg+xml");
-      res.status(200).send(shield);
-    } else {
-      res.status(429).send(`ratelimited until ${new Date(
-        stopRequestsUntil * 1000
-      )}. Thanks Discord`);
+    if (serverInfo.error) {
+      return res.status(400).send(serverInfo.error);
     }
+
+    const shield = await generateShield({
+      label: serverInfo.name,
+      message: serverInfo.memberCount,
+      compact,
+      theme,
+      style,
+      logoColor,
+    });
+
+    res.setHeader("Content-Type", "image/svg+xml");
+    res.status(200).send(shield);
   });
 
   app.listen(port, () => {
     console.log(
-      `discord-md-badge v2.0.0 listening at http://localhost:${port}`
+      `discord-md-badge v2.2.0 listening at http://localhost:${port}`
     );
   });
 });

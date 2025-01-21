@@ -1,54 +1,83 @@
 import "dotenv/config";
 
-import NodeFetchCache, { FileSystemCache } from "node-fetch-cache";
+const regexes = {
+  invite:
+    /discord(?:(?:app)?\.com\/invite|\.gg(?:\/invite)?)\/(?<code>[\w-]{2,255})/i, // https://github.com/discordjs/discord.js/blob/e673b3c129f288f9f271e0b991d16dc2901cdc8a/packages/discord.js/src/structures/Invite.js#L21C3-L21C104
+  name: /(?<=\<title\>).*?(?=\<\/title\>)/g,
+  members: /(?<=\<meta name="description" content=".* \| ).*(?=.*" \/>)/g,
+  canonicalURL: /(?<=\<link rel="canonical" href=").*?(?=" \/>)/g,
+};
 
-const fetch = NodeFetchCache.create({
-  shouldCacheResponse: (response) => response.ok,
-  cache: new FileSystemCache({ ttl: 4 * 3600000 }), // 4 hours.
-});
+// set up in-memory key-value store for caching
+import Keyv from "keyv";
+const keyv = new Keyv();
+
+// set up proxy
+import { ProxyAgent } from "undici";
+const dispatcher = new ProxyAgent(process.env.PROXY_URL);
 
 export default async function fetchServerInfo(invite) {
-  // https://github.com/discordjs/discord.js/blob/e673b3c129f288f9f271e0b991d16dc2901cdc8a/packages/discord.js/src/structures/Invite.js#L21C3-L21C104
-  const inviteRegex =
-    /discord(?:(?:app)?\.com\/invite|\.gg(?:\/invite)?)\/(?<code>[\w-]{2,255})/i;
+  const inviteID = regexes.invite.exec(invite)?.groups?.code ?? invite;
 
-  const inviteID = inviteRegex.exec(invite)?.groups?.code ?? invite;
+  let serverInfo = await keyv.get(inviteID);
 
-  const serverFetch = await fetch(
-    `${process.env.FETCH_PROXY_URL}https://discord.com/api/v10/invites/${inviteID}?with_counts=true&with_expiration=true`,
-    {
-      headers: {
-        authentication: `Bot ${process.env.DC_TOKEN}`,
-        origin: process.env.FETCH_PROXY_ORIGIN_HEADER,
-        "User-Agent":
-          "discord-md-badge (https://github.com/gitlimes/discord-md-badge, v2.0.0)",
-      },
+  // if the server info has expired, or has never been fetched, we fetch and cache it again
+  if (!serverInfo) {
+    serverInfo = await _fetchServer(inviteID);
+
+    // if we get a fetch error we retry a few times, then we give up and cache it as broken for 24h.
+    let i = 0;
+    while (serverInfo.fetcherror) {
+      serverInfo = await _fetchServer(inviteID);
+      i += 1;
+
+      if (i >= 5) {
+        serverInfo = {
+          error: `Persistent error: ${serverInfo.error}`,
+        };
+        break;
+      }
     }
-  );
 
-  if (!serverFetch.ok) {
-    return {
-      error: `fetch error: ${serverFetch.status}, ${serverFetch.statusText}`,
-      retryAfter: serverFetch.headers.get("retry-after"),
-    };
+    // cache in memory for a day (servers don't really change that much)
+    keyv.set(inviteID, serverInfo, 24 * 60 * 60 * 1000);
   }
 
-  const server = await serverFetch.json();
+  return serverInfo;
+}
 
-  if (server.code === inviteID) {
-    return {
-      name: server.guild.name,
-      memberCount: server.approximate_member_count,
-    };
-  } else {
-    if (server.retry_after) {
+// function that actually "fetches" data in the "HTTP request" sense
+async function _fetchServer(inviteID) {
+  const reconstructedInviteURL = `https://discord.com/invite/${inviteID}`;
+
+  try {
+    const serverFetch = await fetch(reconstructedInviteURL, {
+      dispatcher,
+    });
+
+    if (!serverFetch.ok) {
       return {
-        error: "rate limited",
+        fetcherror: `${serverFetch.status}, ${serverFetch.statusText}`,
+      };
+    }
+
+    const server = await serverFetch.text();
+
+    if (regexes.canonicalURL.exec(server)?.[0] === reconstructedInviteURL) {
+      return {
+        name: regexes.name.exec(server)[0],
+        memberCount: regexes.members.exec(server)[0],
       };
     } else {
+      // if the invite page doesn't contain a canonical link, then the invite is invalid
       return {
         error: "invalid invite",
       };
     }
+  } catch (error) {
+    console.error('Fetch error:', error); 
+    return {
+      fetcherror: `network error: ${error.message}`,
+    };
   }
 }
