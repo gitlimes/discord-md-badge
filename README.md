@@ -2,6 +2,18 @@
 
 A customizable badge that shows your Discord account, a server invite, or a bot account.
 
+## This project needs your support!
+
+You may have noticed some instability with the server invite badge and user/bot badges in the past. I’ve implemented a fix, but it requires renting proxy servers out of pocket, which I can’t sustain long-term.
+
+To keep the service running, I’m reaching out for your support. If you appreciate this project and can spare some change, please consider donating via [Ko-fi](https://ko-fi.com/pinklimes) or [liberapay](https://liberapay.com/limes/). Every contribution helps!
+
+If you can’t donate, that’s perfectly fine! I'm just grateful that you're here.
+
+okthanksbyeee back to the readme now :)
+
+* * *
+
 <table>
   <tr>
     <th><a href="#user-account">User Account</a></th>
