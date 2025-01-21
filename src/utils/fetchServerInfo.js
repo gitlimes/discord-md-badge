@@ -3,9 +3,6 @@ import "dotenv/config";
 const regexes = {
   invite:
     /discord(?:(?:app)?\.com\/invite|\.gg(?:\/invite)?)\/(?<code>[\w-]{2,255})/i, // https://github.com/discordjs/discord.js/blob/e673b3c129f288f9f271e0b991d16dc2901cdc8a/packages/discord.js/src/structures/Invite.js#L21C3-L21C104
-  name: /(?<=\<title\>).*?(?=\<\/title\>)/g,
-  members: /(?<=\<meta name="description" content=".* \| ).*(?=.*" \/>)/g,
-  canonicalURL: /(?<=\<link rel="canonical" href=").*?(?=" \/>)/g,
 };
 
 // set up in-memory key-value store for caching
@@ -48,34 +45,54 @@ export default async function fetchServerInfo(invite) {
 
 // function that actually "fetches" data in the "HTTP request" sense
 async function _fetchServer(inviteID) {
-  const reconstructedInviteURL = `https://discord.com/invite/${inviteID}`;
+  const reconstructedInviteURL = `https://discord.com/api/v10/invites/${inviteID}?with_counts=true&with_expiration=true`;
 
   try {
     const serverFetch = await fetch(reconstructedInviteURL, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.3",
+      },
       dispatcher,
     });
 
     if (!serverFetch.ok) {
-      return {
-        fetcherror: `${serverFetch.status}, ${serverFetch.statusText}`,
-      };
+      const server = await serverFetch.json();
+
+      if (server.message === "Unknown Invite") {
+        return {
+          name: "Invalid invite",
+          memberCount: "Check your invite or try again later",
+        };
+      } else {
+        return {
+          fetcherror: `${serverFetch.status}, ${serverFetch.statusText}`,
+        };
+      }
     }
 
-    const server = await serverFetch.text();
+    const server = await serverFetch.json();
 
-    if (regexes.canonicalURL.exec(server)?.[0] === reconstructedInviteURL) {
-      return {
-        name: regexes.name.exec(server)[0],
-        memberCount: regexes.members.exec(server)[0],
+    if (server.code === inviteID) {
+      const info = {
+        name: server.guild.name,
+        memberCount: server.approximate_member_count,
       };
+
+      if (info.memberCount == 1) {
+        info.memberCount += " member";
+      } else {
+        info.memberCount += " members";
+      }
+
+      return info;
     } else {
-      // if the invite page doesn't contain a canonical link, then the invite is invalid
       return {
         error: "invalid invite",
       };
     }
   } catch (error) {
-    console.error('Fetch error:', error); 
+    console.error("Fetch error:", error);
     return {
       fetcherror: `network error: ${error.message}`,
     };
