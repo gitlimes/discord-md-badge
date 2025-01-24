@@ -89,9 +89,11 @@ export default async function generateShield(p) {
   let shield = await shieldFetch.text();
 
   shield = shield.replaceAll(username.toUpperCase(), username);
-  shield = shield
-    .replaceAll('font-weight="bold"', "")
-    .replaceAll("<text ", "<text font-weight='bold' ");
+  if (o.style === "for-the-badge") {
+    shield = shield
+      .replaceAll('font-weight="bold"', "")
+      .replaceAll("<text ", "<text font-weight='bold' ");
+  }
 
   return shield;
 }
